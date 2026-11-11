@@ -1,3 +1,19 @@
+function init_moods () {
+    moodhappy = images.createImage(`
+        # . # . .
+        . . . . .
+        # . # . .
+        # # # . .
+        . . . . .
+        `)
+    moodsad = images.createImage(`
+        # . # . .
+        . . . . .
+        # # # . .
+        # . # . .
+        . . . . .
+        `)
+}
 function emotion (sad: number, hungry: number, thirsty: number, needs_clean: number, needs_exersise: number) {
     led.plotBrightness(4, 0, sad * 255)
     led.plotBrightness(4, 1, hungry * 255)
@@ -9,11 +25,7 @@ function show_face (face: Image, sad: number, hungry: number, thirsty: number, n
     face.showImage(0)
     emotion(sad, hungry, thirsty, needsclean, needsexersize)
 }
-let moodhappy = images.createImage(`
-    # . # . .
-    . . . . .
-    # . # . .
-    # # # . .
-    . . . . .
-    `)
+let moodsad: Image = null
+let moodhappy: Image = null
+init_moods()
 show_face(moodhappy, 0, 1, 1, 0, 1)
