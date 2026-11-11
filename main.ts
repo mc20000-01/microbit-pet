@@ -5,6 +5,10 @@ function emotion (sad: number, hungry: number, thirsty: number, needs_clean: num
     led.plotBrightness(4, 3, needs_clean * 255)
     led.plotBrightness(4, 4, needs_exersise * 255)
 }
+function show_face (face: Image, sad: number, hungry: number, thirsty: number, needsclean: number, needsexersize: number) {
+    face.showImage(0)
+    emotion(sad, hungry, thirsty, needsclean, needsexersize)
+}
 let moodhappy = images.createImage(`
     # . # . .
     . . . . .
@@ -12,5 +16,4 @@ let moodhappy = images.createImage(`
     # # # . .
     . . . . .
     `)
-moodhappy.showImage(0)
-emotion(0, 1, 1, 0, 1)
+show_face(moodhappy, 0, 1, 1, 0, 1)
