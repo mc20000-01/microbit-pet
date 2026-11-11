@@ -4,34 +4,10 @@ function show_face (face: Image, sad: number, hungry: number, thirsty: number, n
 }
 function init_actions () {
     actionmenuframes = bigImages.create()
-    actionmenuframes.addFrame(images.createImage(`
-        . . . # #
-        . . # # #
-        . . # # .
-        # # . . .
-        # # . . .
-        `))
-    actionmenuframes.addFrame(images.createImage(`
-        # . . . #
-        # # # # #
-        # # # # #
-        # # # # #
-        # # # # #
-        `))
-    actionmenuframes.addFrame(images.createImage(`
-        . . # . .
-        . . # . .
-        . . # . .
-        . # # # .
-        . # # # .
-        `))
-    actionmenuframes.addFrame(images.createImage(`
-        . . # # #
-        . . . # #
-        . . . . #
-        # # # # #
-        # # # # #
-        `))
+    actionmenuframes.addLevelFrame("00123:00232:00321:03000:30000")
+    actionmenuframes.addLevelFrame("30003:31113:31113:31113:33333")
+    actionmenuframes.addLevelFrame("00300:00300:00300:03330:02220")
+    actionmenuframes.addLevelFrame("00333:00023:00003:23233:32323")
 }
 input.onButtonPressed(Button.B, function () {
     if (inactionmenu) {
@@ -74,6 +50,6 @@ init_actions()
 show_face(moodhappy, 0, 1, 1, 0, 1)
 basic.forever(function () {
     if (inactionmenu) {
-        actionmenuframes.showFrame(action)
+        actionmenuframes.showLevelFrame(action, 5)
     }
 })
