@@ -3,6 +3,7 @@ function show_face (face: Image, sad: number, hungry: number, thirsty: number, n
     emotion(sad, hungry, thirsty, needsclean, needsexersize)
 }
 function init_actions () {
+    actionmenuframes = bigImages.create()
     actionmenuframes.addFrame(images.createImage(`
         . . . # #
         . . # # #
@@ -71,7 +72,6 @@ let moodhappy: Image = null
 init_moods()
 init_actions()
 show_face(moodhappy, 0, 1, 1, 0, 1)
-actionmenuframes = bigImages.create()
 basic.forever(function () {
     if (inactionmenu) {
         actionmenuframes.showFrame(action)
