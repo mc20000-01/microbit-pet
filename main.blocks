@@ -1,0 +1,7 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="20PoVoG)YX6]Xt[Q)n3w">inactionmenu</variable><variable id="dNWP60e@X#^:rB+,IRhK">action</variable><variable id="5WNl9Tw%a}11_AA``F9%">moodhappy</variable><variable id="mmoIP(qOG#!+~j3=j|22">action-menu-frames</variable><variable id="[l*mvXL[;nKg]z*YxW/8">myImage</variable></variables><block type="pxt-on-start" id="BVb/kxC+d)@M6]*1,xU:" x="0" y="0"><statement name="HANDLER"><block type="variables_set" id="tihy!CBsiNr(0(A]_$Pr"><field name="VAR" id="5WNl9Tw%a}11_AA``F9%">moodhappy</field><value name="VALUE"><shadow type="math_number" id=".JZFE`c^.!E;5h*$)k[J"><field name="NUM">0</field></shadow><block type="device_build_image" id="|l?8@]wH:nt@grsU:9J?"><field name="LEDS">`
+        # . # . . 
+        . . . . . 
+        # . # . . 
+        # # # . . 
+        . . . . .
+        `</field></block></value><next><block type="device_show_image_offset" id="MV{x(v,y53$Jv=5aMpBz"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><value name="sprite"><block type="variables_get" id="U?pl[Ml!%[nRK4jF7$Iw"><field name="VAR" id="5WNl9Tw%a}11_AA``F9%">moodhappy</field></block></value><value name="offset"><shadow type="math_number" id="[AlP}XJecQ#q3#dxjfH?"><field name="NUM">0</field></shadow></value></block></next></block></statement></block></xml>
