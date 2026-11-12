@@ -17,4 +17,7 @@ jobs:
         with:
           tag_name: build-${{ github.run_number }}
           name: build ${{ github.run_number }}
-          files: built/binary.hex
+          files: |
+            built/binary.hex
+            main.ts
+            main.py
