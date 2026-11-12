@@ -31,10 +31,10 @@ input.onButtonPressed(Button.B, function () {
         music.play(music.createSoundExpression(WaveShape.Triangle, 1, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
     }
 })
-function emotion (sad: number, hungry: number, thirsty: number, needs_clean: number, needs_exersise: number) {
-    led.plot(sad + 4, 0)
-    led.plot(hungry + 4, 1)
-    led.plot(thirsty + 4, 2)
+function emotion (sad2: number, hungry2: number, thirsty2: number, needs_clean: number, needs_exersise: number) {
+    led.plot(sad2 + 4, 0)
+    led.plot(hungry2 + 4, 1)
+    led.plot(thirsty2 + 4, 2)
     led.plot(needs_clean + 4, 3)
     led.plot(needs_exersise + 4, 4)
 }
@@ -53,12 +53,12 @@ init_moods()
 init_actions()
 show_face(1, 0, 1, 1, 0, 1)
 let mood = 1
-let hunger = 0
-let thirst = 0
 let dirty = 1
-let slugish = 0
 basic.forever(function () {
-    currentstate = "" + mood + hunger + thirst + dirty + slugish + inactionmenu
+    let slugish = 0
+    let thirst = 0
+    let hunger = 0
+    currentstate = "" + mood + ("" + hunger) + ("" + thirst) + ("" + dirty) + ("" + slugish) + ("" + inactionmenu)
     if (inactionmenu) {
         actionmenuframes.showLevelFrame(action, 5)
         lastsate = currentstate

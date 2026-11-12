@@ -10,13 +10,14 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "bigimage.ts"
+        "bigimage.ts",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "9.0.12",
+        "target": "9.1.2",
         "targetId": "microbit"
     },
     "supportedTargets": [
