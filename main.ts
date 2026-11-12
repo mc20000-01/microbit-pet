@@ -45,7 +45,6 @@ input.onButtonPressed(Button.A, function () {
             music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         }
         inactionmenu = 3
-        basic.pause(100)
         inactionmenu = 0
     } else {
         music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
@@ -83,6 +82,21 @@ function emotion (sad2: number, hungry2: number, thirsty2: number, needs_clean: 
     led.plot(needs_clean + 4, 3)
     led.plot(needs_exersise + 4, 4)
 }
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    for (let index = 0; index < 2; index++) {
+        faceanimframes.showFrame(7)
+        music.play(music.createSoundExpression(WaveShape.Square, 166, 2494, 255, 0, 20, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+        music.play(music.createSoundExpression(WaveShape.Square, 2450, 1, 255, 0, 20, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+        faceanimframes.showFrame(8)
+        music.play(music.createSoundExpression(WaveShape.Square, 166, 2494, 255, 0, 20, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+        music.play(music.createSoundExpression(WaveShape.Square, 2450, 1, 255, 0, 20, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+    }
+    mood = 1
+    moodtimer = 0
+    inactionmenu = 3
+    basic.pause(20)
+    inactionmenu = 0
+})
 function init_moods () {
     moodframes = bigImages.create()
     moodframes.addLevelFrame("30300:00000:33300:30300:00000")
@@ -137,6 +151,20 @@ function init_moods () {
         . # # . #
         # # # # #
         `))
+    faceanimframes.addFrame(images.createImage(`
+        # # . # #
+        # # . # #
+        . . . . .
+        # . . . #
+        # # # # #
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        # # # # #
+        # # . # #
+        # # . # #
+        . . . . .
+        # . . . #
+        `))
 }
 let lastsate = ""
 let currentstate = ""
@@ -149,16 +177,18 @@ let slugish = 0
 let dirty = 0
 let thirst = 0
 let hunger = 0
+let mood = 0
 let slugishtimer = 0
 let dirtytimer = 0
 let thirsttimer = 0
 let hungertimer = 0
 let moodtimer = 0
+moodtimer = 0
 hungertimer = 0
 thirsttimer = 0
 dirtytimer = 0
 slugishtimer = 0
-let mood = 1
+mood = 1
 hunger = 0
 thirst = 0
 dirty = 1
@@ -188,14 +218,18 @@ basic.forever(function () {
     }
     if (194000 < hungertimer) {
         hunger = 0
+        moodtimer = moodtimer + 1
     }
     if (70000 < thirsttimer) {
         thirst = 0
+        moodtimer = moodtimer + 1
     }
     if (140000 < dirtytimer) {
         dirty = 0
+        moodtimer = moodtimer + 1
     }
     if (194000 < slugishtimer) {
         slugish = 0
+        moodtimer = moodtimer + 1
     }
 })
