@@ -18,11 +18,11 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 function emotion (sad: number, hungry: number, thirsty: number, needs_clean: number, needs_exersise: number) {
-    led.plotBrightness(4, 0, sad * 255)
-    led.plotBrightness(4, 1, hungry * 255)
-    led.plotBrightness(4, 2, thirsty * 255)
-    led.plotBrightness(4, 3, needs_clean * 255)
-    led.plotBrightness(4, 4, needs_exersise * 255)
+    led.plot(sad + 4, 0)
+    led.plot(hungry + 4, 1)
+    led.plot(thirsty + 4, 2)
+    led.plot(needs_clean + 4, 3)
+    led.plot(needs_exersise + 4, 4)
 }
 function init_moods () {
     moodhappy = images.createImage(`
@@ -40,6 +40,8 @@ function init_moods () {
         . . . . .
         `)
 }
+let lastsate = ""
+let currentstate = ""
 let moodsad: Image = null
 let action = 0
 let inactionmenu = 0
@@ -48,8 +50,19 @@ let moodhappy: Image = null
 init_moods()
 init_actions()
 show_face(moodhappy, 0, 1, 1, 0, 1)
+let mood = 1
+let hunger = 0
+let thirst = 0
+let dirty = 1
+let slugish = 0
 basic.forever(function () {
+    currentstate = "" + mood + hunger + thirst + dirty + slugish
     if (inactionmenu) {
         actionmenuframes.showLevelFrame(action, 5)
+    } else if (lastsate != currentstate) {
+        show_face(moodhappy, mood, hunger, thirst, dirty, slugish)
+        lastsate = currentstate
+    } else {
+    	
     }
 })
