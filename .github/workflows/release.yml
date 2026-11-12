@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - generate_release_notes: true
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -17,6 +18,7 @@ jobs:
         with:
           tag_name: build-${{ github.run_number }}
           name: build ${{ github.run_number }}
+          generate_release_notes: true
           files: |
             built/binary.hex
             main.ts
