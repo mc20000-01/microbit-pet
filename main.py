@@ -98,18 +98,23 @@ action = 0
 actionmenuframes: bigImages.BigImage = None
 moodframes: bigImages.BigImage = None
 inactionmenu = 0
+mood = 0
+hunger = 1
+thirst = 1
+dirty = 0
+slugish = 1
+moodtimer = 0
+hungertimer = 0
+thirsttimer = 0
+dirtytimer = 0
+slugishtimer = 0
 init_moods()
 init_actions()
-show_face(1, 0, 1, 1, 0, 1)
-mood = 1
-hunger = 0
-thirst = 0
-dirty = 1
-slugish = 0
+show_face(0, 0, 1, 1, 0, 1)
 
 def on_forever():
     global currentstate, lastsate
-    currentstate = "" + str(mood) + str(hunger) + str(thirst) + str(dirty) + str(slugish) + str(inactionmenu)
+    currentstate = "" + str(mood) + ("" + str(hunger)) + ("" + str(thirst)) + ("" + str(dirty)) + ("" + str(slugish)) + ("" + str(inactionmenu))
     if inactionmenu:
         actionmenuframes.show_level_frame(action, 5)
         lastsate = currentstate

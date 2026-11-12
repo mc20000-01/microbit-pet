@@ -49,15 +49,20 @@ let action = 0
 let actionmenuframes: bigImages.BigImage = null
 let moodframes: bigImages.BigImage = null
 let inactionmenu = 0
+let moodtimer = 0
+let hungertimer = 0
+let thirsttimer = 0
+let dirtytimer = 0
+let slugishtimer = 0
+let mood = 1
+let hunger = 0
+let thirst = 0
+let dirty = 1
+let slugish = 0
 init_moods()
 init_actions()
-show_face(1, 0, 1, 1, 0, 1)
-let mood = 1
-let dirty = 1
+show_face(0, 0, 1, 1, 0, 1)
 basic.forever(function () {
-    let slugish = 0
-    let thirst = 0
-    let hunger = 0
     currentstate = "" + mood + ("" + hunger) + ("" + thirst) + ("" + dirty) + ("" + slugish) + ("" + inactionmenu)
     if (inactionmenu) {
         actionmenuframes.showLevelFrame(action, 5)
@@ -68,4 +73,9 @@ basic.forever(function () {
     } else {
     	
     }
+    moodtimer = moodtimer + 1
+    hungertimer = hungertimer + 1
+    thirsttimer = thirsttimer + 1
+    dirtytimer = dirtytimer + 1
+    slugishtimer = slugishtimer + 1
 })
