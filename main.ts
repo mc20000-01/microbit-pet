@@ -78,4 +78,21 @@ basic.forever(function () {
     thirsttimer = thirsttimer + 1
     dirtytimer = dirtytimer + 1
     slugishtimer = slugishtimer + 1
+    serial.writeValue("mood timer", moodtimer)
+    serial.writeValue("time on in ms", control.millis())
+    if (97000 < moodtimer) {
+        mood = 0
+    }
+    if (194000 < hungertimer) {
+        hunger = 0
+    }
+    if (70000 < thirsttimer) {
+        thirst = 0
+    }
+    if (140000 < dirtytimer) {
+        dirty = 0
+    }
+    if (194000 < slugishtimer) {
+        slugish = 0
+    }
 })
