@@ -2,6 +2,45 @@ input.onButtonPressed(Button.A, function () {
     if (inactionmenu) {
         inactionmenu = 0
         music.play(music.createSoundExpression(WaveShape.Triangle, 5000, 1, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+        basic.pause(100)
+        if (0 == action) {
+            for (let index = 0; index < 4; index++) {
+                faceanimframes.showFrame(0)
+                music.play(music.createSoundExpression(WaveShape.Sawtooth, 166, 1, 255, 0, 100, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+                faceanimframes.showFrame(1)
+            }
+            hunger = 1
+        } else if (1 == action) {
+            for (let index = 0; index < 4; index++) {
+                faceanimframes.showFrame(0)
+                music.play(music.createSoundExpression(WaveShape.Noise, 166, 2845, 0, 255, 100, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+                faceanimframes.showFrame(1)
+            }
+            thirst = 1
+        } else if (2 == action) {
+            for (let index = 0; index < 6; index++) {
+                faceanimframes.showFrame(2)
+                music.play(music.createSoundExpression(WaveShape.Noise, 523, 1, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+                faceanimframes.showFrame(3)
+            }
+            dirty = 1
+        } else if (3 == action) {
+            for (let index = 0; index < 5; index++) {
+                faceanimframes.showFrame(4)
+                music.play(music.createSoundExpression(WaveShape.Square, 1, 562, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+                faceanimframes.showFrame(5)
+                music.play(music.createSoundExpression(WaveShape.Square, 1, 562, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+                faceanimframes.showFrame(6)
+            }
+            slugish = 1
+            dirty = 0
+            hunger = 0
+        } else {
+            music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+        }
+        inactionmenu = 3
+        basic.pause(100)
+        inactionmenu = 0
     } else {
         music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         basic.pause(100)
@@ -42,23 +81,78 @@ function init_moods () {
     moodframes = bigImages.create()
     moodframes.addLevelFrame("30300:00000:33300:30300:00000")
     moodframes.addLevelFrame("30300:00000:30300:33300:00000")
+    faceanimframes = bigImages.create()
+    faceanimframes.addFrame(images.createImage(`
+        # # . # #
+        # # . # #
+        . . . . .
+        # . . . #
+        # # # # #
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        # # . # #
+        # # . # #
+        . . . . .
+        # # # # #
+        # # # # #
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        . # . . .
+        . . # . .
+        . . . # #
+        . . . # #
+        . . # # #
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        . # . . .
+        . # . . .
+        . # . . .
+        # # # . .
+        # # # . .
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        . # . # #
+        # # . . #
+        . # . . #
+        # # . . #
+        # # # # #
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        . # . # #
+        # # # . #
+        . # . . #
+        # . # . #
+        # # # # #
+        `))
+    faceanimframes.addFrame(images.createImage(`
+        . # . # #
+        . # # . #
+        . # . . #
+        . # # . #
+        # # # # #
+        `))
 }
 let lastsate = ""
 let currentstate = ""
-let action = 0
 let actionmenuframes: bigImages.BigImage = null
 let moodframes: bigImages.BigImage = null
+let faceanimframes: bigImages.BigImage = null
+let action = 0
 let inactionmenu = 0
+let slugish = 0
+let dirty = 0
+let thirst = 0
+let hunger = 0
 let moodtimer = 0
 let hungertimer = 0
 let thirsttimer = 0
 let dirtytimer = 0
 let slugishtimer = 0
 let mood = 1
-let hunger = 0
-let thirst = 0
-let dirty = 1
-let slugish = 0
+hunger = 0
+thirst = 0
+dirty = 1
+slugish = 0
 init_moods()
 init_actions()
 show_face(0, 0, 1, 1, 0, 1)
