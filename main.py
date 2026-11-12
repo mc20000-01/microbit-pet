@@ -105,6 +105,7 @@ def on_button_pressed_a():
                     InterpolationCurve.LINEAR),
                 music.PlaybackMode.UNTIL_DONE)
         inactionmenu = 3
+        basic.pause(20)
         inactionmenu = 0
     else:
         music.play(music.create_sound_expression(WaveShape.NOISE,
@@ -329,6 +330,13 @@ dirty = 1
 slugish = 0
 init_moods()
 init_actions()
+power.full_power_on(FullPowerSource.A)
+power.full_power_on(FullPowerSource.B)
+
+def on_every_interval():
+    if input.light_level() < 64:
+        power.low_power_pause(10000)
+loops.every_interval(500, on_every_interval)
 
 def on_forever():
     global currentstate, lastsate, moodtimer, hungertimer, thirsttimer, dirtytimer, slugishtimer, mood, hunger, thirst, dirty, slugish

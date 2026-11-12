@@ -1,4 +1,5 @@
-input.onButtonPressed(Button.A, function () {
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    
     if (inactionmenu) {
         inactionmenu = 0
         music.play(music.createSoundExpression(WaveShape.Triangle, 5000, 1, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
@@ -13,7 +14,7 @@ input.onButtonPressed(Button.A, function () {
             dirty = 0
             hungertimer = 0
         } else if (1 == action) {
-            for (let index = 0; index < 4; index++) {
+            for (let index2 = 0; index2 < 4; index2++) {
                 faceanimframes.showFrame(0)
                 music.play(music.createSoundExpression(WaveShape.Noise, 166, 2845, 0, 255, 100, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
                 faceanimframes.showFrame(1)
@@ -21,7 +22,7 @@ input.onButtonPressed(Button.A, function () {
             thirst = 1
             thirsttimer = 0
         } else if (2 == action) {
-            for (let index = 0; index < 6; index++) {
+            for (let index3 = 0; index3 < 6; index3++) {
                 faceanimframes.showFrame(2)
                 music.play(music.createSoundExpression(WaveShape.Noise, 523, 1, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
                 faceanimframes.showFrame(3)
@@ -29,7 +30,7 @@ input.onButtonPressed(Button.A, function () {
             dirty = 1
             dirtytimer = 0
         } else if (3 == action) {
-            for (let index = 0; index < 5; index++) {
+            for (let index4 = 0; index4 < 5; index4++) {
                 faceanimframes.showFrame(4)
                 music.play(music.createSoundExpression(WaveShape.Square, 1, 562, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
                 faceanimframes.showFrame(5)
@@ -44,19 +45,24 @@ input.onButtonPressed(Button.A, function () {
         } else {
             music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         }
+        
         inactionmenu = 3
+        basic.pause(20)
         inactionmenu = 0
     } else {
         music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         basic.pause(100)
         music.play(music.createSoundExpression(WaveShape.Noise, 5000, 3284, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
     }
+    
 })
-function show_face (face: number, sad: number, hungry: number, thirsty: number, needsclean: number, needsexersize: number) {
+function show_face(face: number, sad: number, hungry: number, thirsty: number, needsclean: number, needsexersize: number) {
     moodframes.showLevelFrame(face, 5)
     emotion(sad, hungry, thirsty, needsclean, needsexersize)
 }
-function init_actions () {
+
+function init_actions() {
+    
     actionmenuframes = bigImages.create()
     actionmenuframes.addLevelFrame("00123:00232:00321:03000:30000")
     actionmenuframes.addLevelFrame("30003:31113:31113:31113:33333")
@@ -64,7 +70,9 @@ function init_actions () {
     actionmenuframes.addLevelFrame("00333:00023:00003:23233:32323")
     actionmenuframes.addLevelFrame("30003:03030:00300:03030:30003")
 }
-input.onButtonPressed(Button.B, function () {
+
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    
     if (inactionmenu) {
         action += 1
         action = action % 5
@@ -74,16 +82,19 @@ input.onButtonPressed(Button.B, function () {
         inactionmenu = 1
         music.play(music.createSoundExpression(WaveShape.Triangle, 1, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
     }
+    
 })
-function emotion (sad2: number, hungry2: number, thirsty2: number, needs_clean: number, needs_exersise: number) {
+function emotion(sad2: number, hungry2: number, thirsty2: number, needs_clean: number, needs_exersise: number) {
     led.plot(sad2 + 4, 0)
     led.plot(hungry2 + 4, 1)
     led.plot(thirsty2 + 4, 2)
     led.plot(needs_clean + 4, 3)
     led.plot(needs_exersise + 4, 4)
 }
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    for (let index = 0; index < 2; index++) {
+
+input.onLogoEvent(TouchButtonEvent.Pressed, function on_logo_pressed() {
+    
+    for (let index5 = 0; index5 < 2; index5++) {
         faceanimframes.showFrame(7)
         music.play(music.createSoundExpression(WaveShape.Square, 166, 2494, 255, 0, 20, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
         music.play(music.createSoundExpression(WaveShape.Square, 2450, 1, 255, 0, 20, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
@@ -97,7 +108,8 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     basic.pause(20)
     inactionmenu = 0
 })
-function init_moods () {
+function init_moods() {
+    
     moodframes = bigImages.create()
     moodframes.addLevelFrame("30300:00000:33300:30300:00000")
     moodframes.addLevelFrame("30300:00000:30300:33300:00000")
@@ -166,11 +178,12 @@ function init_moods () {
         # . . . #
         `))
 }
+
 let lastsate = ""
 let currentstate = ""
-let actionmenuframes: bigImages.BigImage = null
-let moodframes: bigImages.BigImage = null
-let faceanimframes: bigImages.BigImage = null
+let actionmenuframes : bigImages.BigImage = null
+let moodframes : bigImages.BigImage = null
+let faceanimframes : bigImages.BigImage = null
 let action = 0
 let inactionmenu = 0
 let slugish = 0
@@ -195,8 +208,17 @@ dirty = 1
 slugish = 0
 init_moods()
 init_actions()
-basic.forever(function () {
-    currentstate = "" + mood + ("" + hunger) + ("" + thirst) + ("" + dirty) + ("" + slugish) + ("" + inactionmenu)
+power.fullPowerOn(FullPowerSource.A)
+power.fullPowerOn(FullPowerSource.B)
+loops.everyInterval(500, function on_every_interval() {
+    if (input.lightLevel() < 64) {
+        power.lowPowerPause(10000)
+    }
+    
+})
+basic.forever(function on_forever() {
+    
+    currentstate = "" + ("" + mood) + ("" + ("" + hunger)) + ("" + ("" + thirst)) + ("" + ("" + dirty)) + ("" + ("" + slugish)) + ("" + ("" + inactionmenu))
     if (inactionmenu) {
         actionmenuframes.showLevelFrame(action, 5)
         lastsate = currentstate
@@ -204,8 +226,9 @@ basic.forever(function () {
         show_face(mood, mood, hunger, thirst, dirty, slugish)
         lastsate = currentstate
     } else {
-    	
+        
     }
+    
     moodtimer = moodtimer + 1
     hungertimer = hungertimer + 1
     thirsttimer = thirsttimer + 1
@@ -216,20 +239,25 @@ basic.forever(function () {
     if (97000 < moodtimer) {
         mood = 0
     }
+    
     if (194000 < hungertimer) {
         hunger = 0
         moodtimer = moodtimer + 1
     }
+    
     if (70000 < thirsttimer) {
         thirst = 0
         moodtimer = moodtimer + 1
     }
+    
     if (140000 < dirtytimer) {
         dirty = 0
         moodtimer = moodtimer + 1
     }
+    
     if (194000 < slugishtimer) {
         slugish = 0
         moodtimer = moodtimer + 1
     }
+    
 })

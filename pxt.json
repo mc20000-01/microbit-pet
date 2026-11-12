@@ -4,7 +4,9 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "power": "github:microbit-foundation/pxt-microbit-v2-power#v0.2.7",
+        "audio-recording": "*"
     },
     "files": [
         "main.blocks",
@@ -23,5 +25,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "pyprj"
 }
