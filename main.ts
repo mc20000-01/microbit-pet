@@ -10,6 +10,8 @@ input.onButtonPressed(Button.A, function () {
                 faceanimframes.showFrame(1)
             }
             hunger = 1
+            dirty = 0
+            hungertimer = 0
         } else if (1 == action) {
             for (let index = 0; index < 4; index++) {
                 faceanimframes.showFrame(0)
@@ -17,6 +19,7 @@ input.onButtonPressed(Button.A, function () {
                 faceanimframes.showFrame(1)
             }
             thirst = 1
+            thirsttimer = 0
         } else if (2 == action) {
             for (let index = 0; index < 6; index++) {
                 faceanimframes.showFrame(2)
@@ -24,6 +27,7 @@ input.onButtonPressed(Button.A, function () {
                 faceanimframes.showFrame(3)
             }
             dirty = 1
+            dirtytimer = 0
         } else if (3 == action) {
             for (let index = 0; index < 5; index++) {
                 faceanimframes.showFrame(4)
@@ -31,10 +35,12 @@ input.onButtonPressed(Button.A, function () {
                 faceanimframes.showFrame(5)
                 music.play(music.createSoundExpression(WaveShape.Square, 1, 562, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
                 faceanimframes.showFrame(6)
+                music.play(music.createSoundExpression(WaveShape.Square, 1, 562, 255, 0, 20, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
             }
             slugish = 1
             dirty = 0
             hunger = 0
+            slugishtimer = 0
         } else {
             music.play(music.createSoundExpression(WaveShape.Noise, 3196, 5000, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         }
@@ -143,11 +149,15 @@ let slugish = 0
 let dirty = 0
 let thirst = 0
 let hunger = 0
-let moodtimer = 0
-let hungertimer = 0
-let thirsttimer = 0
-let dirtytimer = 0
 let slugishtimer = 0
+let dirtytimer = 0
+let thirsttimer = 0
+let hungertimer = 0
+let moodtimer = 0
+hungertimer = 0
+thirsttimer = 0
+dirtytimer = 0
+slugishtimer = 0
 let mood = 1
 hunger = 0
 thirst = 0
@@ -155,7 +165,6 @@ dirty = 1
 slugish = 0
 init_moods()
 init_actions()
-show_face(0, 0, 1, 1, 0, 1)
 basic.forever(function () {
     currentstate = "" + mood + ("" + hunger) + ("" + thirst) + ("" + dirty) + ("" + slugish) + ("" + inactionmenu)
     if (inactionmenu) {
