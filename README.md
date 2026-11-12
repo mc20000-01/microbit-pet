@@ -1,6 +1,16 @@
 
 > Open this page at [https://mc20000-01.github.io/microbit-pet/](https://mc20000-01.github.io/microbit-pet/)
 
+## Try it
+
+<iframe
+  src="https://makecode.microbit.org/---run?id=_DUhEp2R3zcv9"
+  width="300" height="300"
+  style="border:0"
+  allowfullscreen="allowfullscreen"
+  sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+  frameborder="0"></iframe>
+
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
