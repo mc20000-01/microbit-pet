@@ -52,6 +52,7 @@ input.onButtonPressed(Button.A, function () {
         basic.pause(100)
         music.play(music.createSoundExpression(WaveShape.Noise, 5000, 3284, 255, 255, 50, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
     }
+    action = 0
 })
 function show_face (face: number, sad: number, hungry: number, thirsty: number, needsclean: number, needsexersize: number) {
     moodframes.showLevelFrame(face, 5)
@@ -167,12 +168,13 @@ function init_moods () {
         # . . . #
         `))
 }
+let laststatuses = ""
 let lastsate = ""
+let currentstatuses = ""
 let currentstate = ""
 let actionmenuframes: bigImages.BigImage = null
 let moodframes: bigImages.BigImage = null
 let faceanimframes: bigImages.BigImage = null
-let action = 0
 let inactionmenu = 0
 let slugish = 0
 let dirty = 0
@@ -184,6 +186,17 @@ let dirtytimer = 0
 let thirsttimer = 0
 let hungertimer = 0
 let moodtimer = 0
+let action = 0
+action = 0
+let text_list = [
+IconNames.Silly,
+IconNames.Angry,
+IconNames.Cow,
+IconNames.House,
+IconNames.Chessboard,
+IconNames.Pitchfork
+]
+music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.InBackground)
 moodtimer = 0
 hungertimer = 0
 thirsttimer = 0
@@ -198,19 +211,20 @@ init_moods()
 init_actions()
 power.fullPowerOn(FullPowerSource.A)
 power.fullPowerOn(FullPowerSource.B)
-loops.everyInterval(500, function () {
-    if (128 < input.lightLevel()) {
-        power.lowPowerPause(1000)
-    }
-})
 basic.forever(function () {
     currentstate = "" + mood + ("" + hunger) + ("" + thirst) + ("" + dirty) + ("" + slugish) + ("" + inactionmenu)
+    currentstatuses = "" + mood + ("" + hunger) + ("" + thirst) + ("" + dirty) + ("" + slugish)
     if (inactionmenu) {
         actionmenuframes.showLevelFrame(action, 5)
         lastsate = currentstate
     } else if (lastsate != currentstate) {
         show_face(mood, mood, hunger, thirst, dirty, slugish)
         lastsate = currentstate
+        if (laststatuses != currentstatuses) {
+            music.play(music.stringPlayable("B A B G F E C C ", 1500), music.PlaybackMode.UntilDone)
+            music.play(music.stringPlayable("C D C D C D D C ", 1500), music.PlaybackMode.UntilDone)
+            laststatuses = currentstatuses
+        }
     } else {
     	
     }
@@ -219,24 +233,22 @@ basic.forever(function () {
     thirsttimer = thirsttimer + 1
     dirtytimer = dirtytimer + 1
     slugishtimer = slugishtimer + 1
-    serial.writeValue("mood timer", moodtimer)
-    serial.writeValue("time on in ms", control.millis())
-    if (97000 < moodtimer) {
+    if (202500 < moodtimer) {
         mood = 0
     }
-    if (194000 < hungertimer) {
+    if (135000 < hungertimer) {
         hunger = 0
         moodtimer = moodtimer + 1
     }
-    if (70000 < thirsttimer) {
+    if (101250 < thirsttimer) {
         thirst = 0
         moodtimer = moodtimer + 1
     }
-    if (140000 < dirtytimer) {
+    if (405000 < dirtytimer) {
         dirty = 0
         moodtimer = moodtimer + 1
     }
-    if (194000 < slugishtimer) {
+    if (270000 < slugishtimer) {
         slugish = 0
         moodtimer = moodtimer + 1
     }
