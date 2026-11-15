@@ -199,8 +199,8 @@ init_actions()
 power.fullPowerOn(FullPowerSource.A)
 power.fullPowerOn(FullPowerSource.B)
 loops.everyInterval(500, function () {
-    if (input.lightLevel() < 64) {
-        power.lowPowerPause(10000)
+    if (128 < input.lightLevel()) {
+        power.lowPowerPause(1000)
     }
 })
 basic.forever(function () {

@@ -6,7 +6,9 @@
         "radio": "*",
         "microphone": "*",
         "power": "github:microbit-foundation/pxt-microbit-v2-power#v0.2.7",
-        "audio-recording": "*"
+        "audio-recording": "*",
+        "datalogger": "*",
+        "bluetooth": "*"
     },
     "files": [
         "main.blocks",
@@ -19,7 +21,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "9.1.2",
+        "target": "9.0.12",
         "targetId": "microbit"
     },
     "supportedTargets": [
