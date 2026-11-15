@@ -60,7 +60,7 @@ function show_face (face: number, sad: number, hungry: number, thirsty: number, 
 }
 function init_actions () {
     actionmenuframes = bigImages.create()
-    actionmenuframes.addLevelFrame("00123:00232:00321:03000:30000")
+    actionmenuframes.addLevelFrame("00300:03330:33333:03330:00300")
     actionmenuframes.addLevelFrame("30003:31113:31113:31113:33333")
     actionmenuframes.addLevelFrame("00300:00300:00300:03330:02220")
     actionmenuframes.addLevelFrame("00333:00023:00003:23233:32323")
