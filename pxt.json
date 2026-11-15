@@ -3,7 +3,6 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*",
         "microphone": "*",
         "power": "github:microbit-foundation/pxt-microbit-v2-power#v0.2.7",
         "audio-recording": "*"
